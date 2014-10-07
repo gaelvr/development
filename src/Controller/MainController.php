@@ -13,6 +13,9 @@ class MainController implements ControllerProviderInterface
 		$route
 			->get("/", [$this, "index"])
 			->bind("index");
+		$route
+			->get("/hello/{name}", [$this, "hello"])
+			->bind("hello");	
 			
 		return $route;
 	}    
@@ -20,5 +23,12 @@ class MainController implements ControllerProviderInterface
     public function index(Application $app)
     {
 		return "Hola mundo!";
-	}	
+    }
+	
+	public function hello(Application $app, $name)
+	{
+	
+		return "Hola ".$name;
+	
+	}
 }	
